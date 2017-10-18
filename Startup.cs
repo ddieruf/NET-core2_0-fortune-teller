@@ -6,9 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Microsoft.EntityFrameworkCore;
-//using Pivotal.Discovery.Client;
-//using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
-//using Steeltoe.CloudFoundry.Connector.Rabbit;
 
 //For Logging
 using Microsoft.Extensions.Logging;
@@ -27,17 +24,13 @@ namespace FortuneTeller.Services
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-					
             services.AddOptions();
 						services.AddDbContext<FortuneTellerContext>(opt => opt.UseInMemoryDatabase("Fortunes"));
 
             services.AddMvc().AddJsonOptions(options => ConfigureSerializer(options.SerializerSettings));
             services.AddCors();
 						services.AddScoped<IFortuneTeller, FortuneTeller>();
-            //services.AddSingleton<OrderbookService>();
-            //services.Configure<Steeltoe.Discovery.Client.SpringConfig>(Configuration.GetSection("spring"));
-            //services.AddRabbitConnection(Configuration);
-            //services.AddDiscoveryClient(Configuration);
+
             JsonConvert.DefaultSettings = () => ConfigureSerializer(new JsonSerializerSettings());
         }
 
@@ -57,7 +50,6 @@ namespace FortuneTeller.Services
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             });
             app.UseMvc();
-            //app.UseDiscoveryClient();
         }
 
 
