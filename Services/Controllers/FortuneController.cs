@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace FortuneTeller.Services {
 	[Route("")]
 	public class FortuneController : Controller {
 		private readonly IFortuneTeller _iFortuneTeller;
+		private readonly ILogger<FortuneController> _logger;
 
-		public FortuneController(IFortuneTeller iFortuneTeller) {
+		public FortuneController(IFortuneTeller iFortuneTeller, ILogger<FortuneController> logger) {
 			_iFortuneTeller = iFortuneTeller;
+			_logger = logger;
 		}
 
 		[HttpGet("fortunes")]
@@ -17,6 +20,10 @@ namespace FortuneTeller.Services {
 
 		[HttpGet("random")]
 		public Fortune GetRandom() {
+			_logger.LogInformation("A random fortune was requested");
+			_logger.LogWarning("Warning: a random fortune was requested");
+			_logger.LogError("Error: a random fortune was requested");
+
 			return _iFortuneTeller.GetRandom();
 		}
 

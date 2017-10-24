@@ -5,7 +5,7 @@ applications:
   instances: 1
   memory: 512M
   disk_quota: 512M
-  buildpack: dotnet_core_buildpack
+  buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack.git#v1.0.29
   path: ./Services/
 - name: fortune-teller-www
   host: fortuneteller
