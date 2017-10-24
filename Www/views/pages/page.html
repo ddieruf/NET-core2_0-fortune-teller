@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="row" style="background-color: gray;padding:5px;margin-bottom:5px;">
+			<div class="col-lg-12 text-center">
+				<div class="btn-group">
+					<label class="btn btn-lg" ng-model="radioModel" uib-btn-radio="'Left'" ng-click="toggleCodebase()" ng-class="(codebase.lambda===true?'btn-info':'btn-default')">Lambda</label>
+					<label class="btn btn-lg" ng-model="radioModel" uib-btn-radio="'Right'" ng-click="toggleCodebase()" ng-class="(codebase.pcf===true?'btn-info':'btn-default')">PCF</label>
+    		</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div ui-view=""></div>
+			</div>
+		</div>
+	</div>
+</div>

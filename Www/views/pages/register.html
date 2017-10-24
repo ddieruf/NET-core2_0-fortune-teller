@@ -1,0 +1,38 @@
+  <div class="block-center p-lg"  style="width: 400px;">
+		<div class="text-center text-md">REGISTER YOUR NEW ACCOUNT TO GET STARTED</div>
+		<div class="text-center m">
+			<div uib-alert ng-repeat="alert in alerts" ng-class="['alert','alert-' + (alert.type || 'warning')]" close="alerts.splice($index, 1)">{{alert.msg}}</div></div>
+<form ng-submit="register(formData)" validate-form="" novalidate="" name="registerFrm">
+		<div class="form-group has-feedback">
+		<label for="firstName" class="text-muted">Name</label>
+			<div>
+				<div class="inline col-5">
+				<input id="signupInputName" type="text" placeholder="First" autocomplete="on" ng-model="formData.firstName" required="required" class="form-control" ng-class="(!showSubmit?'disabled':'')" />
+			</div>
+			<div class="inline col-5">
+				<input id="signupInputName" type="text" placeholder="Last" autocomplete="on" ng-model="formData.lastName" required="required" class="form-control" ng-class="(!showSubmit?'disabled':'')" />
+			</div>
+			</div>
+		</div>
+		<div class="form-group has-feedback">
+			<label for="signupInputEmail1" class="text-muted">Email</label>
+			<input id="signupInputEmail1" type="email" autocomplete="on" ng-model="formData.email" required="required" class="form-control" ng-class="(!showSubmit?'disabled':'')" />
+			<span class="fa fa-envelope form-control-feedback text-muted"></span>
+		</div>
+		<div class="form-group has-feedback">
+			<label for="signupInputPassword1" class="text-muted">Password</label>
+			<input id="signupInputPassword1" type="password" autocomplete="off" ng-model="formData.password" required="required" class="form-control" ng-class="(!showSubmit?'disabled':'')"
+						 minlength="6" pattern="^(?=.*[a-z])(?=.*[0-9]).{6,}$" data-parsley-pattern-message="Password must have atleast one letter, one number, and be six long" />
+			<span id="password1Lock" class="fa fa-lock form-control-feedback text-muted"></span>
+		</div>
+		<div class="form-group has-feedback">
+			<label for="signupInputRePassword2" class="text-muted">Retype Password</label>
+			<input id="signupInputRePassword2" type="password" autocomplete="off" ng-model="formData.password2" required="required" ng-class="(!showSubmit?'disabled':'')"
+						 data-parsley-equalto="#signupInputPassword1" class="form-control" data-parsley-error-message="This needs to match the other" />
+			<span class="fa fa-lock form-control-feedback text-muted"></span>
+		</div>
+
+		<button id="btnReg" type="submit" class="btn btn-block btn-primary mt-lg">Register account</button>
+	</form>
+</div>
+</div>
